@@ -1,11 +1,18 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
+import { YoutubeApiProvider } from "./context/YoutubeApiContext";
 
+const queryClient = new QueryClient();
 function App() {
   return (
     <>
       <Header />
-      <Outlet />
+      <YoutubeApiProvider>
+        <QueryClientProvider client={queryClient}>
+          <Outlet />
+        </QueryClientProvider>
+      </YoutubeApiProvider>
     </>
   );
 }
