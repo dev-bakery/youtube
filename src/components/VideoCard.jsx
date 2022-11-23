@@ -9,7 +9,8 @@ export default function VideoCard({ video, id }) {
   return (
     <li
       onClick={() => {
-        navigate(`videos/watch/${video.id}`, { state: { video } });
+        // navigate에서 최상위 루트에서 시작하길 원한다면 맨앞에 / 넣어줌
+        navigate(`/videos/watch/${video.id}`, { state: { video } });
       }}>
       {/* state를 통해서 객체를 전달할 수 있음 */}
       <img className='w-full' src={thumbnails.medium.url} alt={title} />
